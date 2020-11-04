@@ -16,8 +16,9 @@
 		{// this is for IE5 , IE6
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
-	xmlhttp.open("GET","demo.xml",true);
-	xmlhttp.send();
+		xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) 
+      {
 	xmlDoc=xmlhttp.responseXML;
 	document.write("<table border='1' width='50%' style=;font-size:40px;'>");
 	// This line will write table tag on HTML document
@@ -39,6 +40,10 @@
 		document.write("</td></tr>");
 	}
 	document.write("</table>");	
+      }
+		};
+		xmlhttp.open("GET","demo.xml",true);
+	xmlhttp.send();
 	</script>
 	
 </body>
